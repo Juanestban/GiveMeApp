@@ -4,10 +4,10 @@
     "slug": "GiveMeApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./app/assets/images/launcher.png",
+    "icon": "./app/assets/images/icon.png",
     "splash": {
-      "image": "./app/assets/images/splashImage/splash.jpg",
-      "resizeMode": "contain",
+      "image": "./app/assets/images/splashImage/splash.png",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -32,7 +32,7 @@
       ],
       "package": "com.websocket.givemeapp",
       "adaptiveIcon": {
-        "foregroundImage": "./app/assets/adaptive-icon.png",
+        "foregroundImage": "./app/assets/images/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
       "versionCode": 1

@@ -1,9 +1,9 @@
-import {Children} from 'react'
+import { Children } from 'react'
+// import {useTapGestureHandler} from 'react-native-redash/lib/module/v1'
 
-// Instalar react-native-gesture-handler
-// Instalar react-native-reanimated
-// Instalar react-native-redash
-const RippleButton = ({onPress, backgroundColor, children}) => {
+
+// Falta testear react-native (gesture-handler - reanimated - redash)
+const RippleButton = ({ onPress, backgroundColor, children }) => {
     const child = Children.only(children)
     return child
 }
