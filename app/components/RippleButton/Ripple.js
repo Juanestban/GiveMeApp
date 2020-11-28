@@ -27,8 +27,7 @@ export default Ripple
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        height: 200,
+        height: 250,
         justifyContent: 'center',
         padding: 8,
         backgroundColor: Colors.white
@@ -37,6 +36,7 @@ const styles = StyleSheet.create({
     touchable: {
         flex: .5,
         borderColor: Colors.back,
+        justifyContent: 'center',
         borderWidth: 1
     },
 
