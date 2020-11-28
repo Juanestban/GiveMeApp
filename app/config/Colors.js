@@ -5,7 +5,21 @@ const Colors = {
     darkTextColor: '#0E131A',
     whiteTextColor: '#E9E9E9',
     white: '#FFF',
-    back: '#000',
+    black: '#000',
+}
+
+export const ColorTheme = {
+    darkTheme: {
+        primary: Colors.primaryColor,
+        background: Colors.primaryColor,
+        card: Colors.darkPrimaryColor,
+        text: Colors.whiteTextColor,
+        border: Colors.darkPrimaryColor,
+        notification: Colors.secondColor
+    },
+    lightTheme: {
+        primaryColor: Colors.secondColor,
+    }
 }
 
 export default Colors;
