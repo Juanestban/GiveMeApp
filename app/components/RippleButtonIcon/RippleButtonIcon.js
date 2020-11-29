@@ -17,13 +17,7 @@ const RippleButtonIcon = ({
             backgroundColor={Colors.darkPrimaryColor}
         >
             <View style={[styles.button, styleButtonIcon]}>
-                {name !== '' && (
-                    <AntDesign name={name} color={Colors.whiteTextColor} size={24} />
-                )}
-                {/* Colocar Componente title Button */}
-                {title !== '' && (
-                    <Text style={styleText}>{title}</Text>
-                )}
+                <AntDesign name={name} color={Colors.whiteTextColor} size={24} />
             </View>
         </RippleButton>
     )
