@@ -13,13 +13,18 @@ import Animated, {
 } from 'react-native-reanimated'
 import { mix, translate, useTapGestureHandler, vec, withTransition } from 'react-native-redash/lib/module/v1'
 
-const RippleButton = ({ onPress, backgroundColor, styeButtonRipple, children }) => {
+const RippleButton = ({
+    onPress = () => console.log('press me'),
+    backgroundColor,
+    styeButtonRipple,
+    children
+}) => {
     const [radius, setRadius] = useState(-1)
     const child = Children.only(children)
     const { gestureHandler, state, position } = useTapGestureHandler()
-    const progress = withTransition(eq(state, State.BEGAN))
+    const progress = withTransition(eq(state, State.BEGAN), {duration: 2000})
     const opacity = or(greaterThan(diff(progress), 0), eq(progress, 1))
-    const scale = mix(progress, .0001, 1)
+    const scale = mix(progress, .001, 1)
     useCode(() => onChange(state, [
         cond(eq(state, State.END), call([], onPress))
     ]), [onPress])
