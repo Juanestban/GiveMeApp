@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useMemo, useEffect } from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance'
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import Login from '../screens/login/Login'
 import MyTheme from '../themes/MyTheme'
-import Index from '../screens/Home'
+import HomeChat from '../screens/Home/Chats'
+import HomeStatus from '../screens/Home/Status'
+import AuthConsumerProvider from '../context/AuthConsumer'
+import { useDispatch, useUserAuth } from '../context/AuthProvider'
+import { TypesAuthUser } from '../reducers/Types'
 
 const Stack = createStackNavigator()
 const Tab = createMaterialTopTabNavigator()
@@ -28,22 +33,44 @@ const TabPrincipal = () => {
         <Tab.Navigator>
             <Tab.Screen
                 name="Chats"
-                component={Index} />
+                component={HomeChat} />
+            <Tab.Screen
+                name="Status"
+                component={HomeStatus} />
         </Tab.Navigator>
     )
 }
 
+// Use default and dark theme by scheme
+// const scheme = useColorScheme()
+// scheme === 'dark' ? MyTheme : DefaultTheme
 const ThemeNavigationContainer = () => {
-    // Use default and dark theme by scheme
-    // const scheme = useColorScheme()
-    // scheme === 'dark' ? MyTheme : DefaultTheme
+    const { isLoading, isSignOut, token } = useUserAuth()
+    const dispatch = useDispatch()
+
+    const authContext = useMemo(() => ({
+        signIn: async () => {
+            dispatch({ type: TypesAuthUser.signIn, token: 'algo' })
+        },
+        signOut: () => { },
+        signUp: async () => { }
+    }), [])
+
+    useEffect(() => {
+        // 
+    }, [])
+
     return (
-        <AppearanceProvider>
-            <NavigationContainer theme={MyTheme}>
-                <StackPrincipal />
-                {/* <TabPincipal /> */}
-            </NavigationContainer>
-        </AppearanceProvider>
+        <AuthConsumerProvider value={authContext}>
+            <AppearanceProvider>
+                <NavigationContainer theme={MyTheme}>
+                    {token === null
+                        ? (<StackPrincipal />)
+                        : (<TabPrincipal />)
+                    }
+                </NavigationContainer>
+            </AppearanceProvider>
+        </AuthConsumerProvider>
     )
 }
 
