@@ -1,5 +1,5 @@
-const url = 'https://give-me-app.herokuapp.com/api'
-const users = '/users'
+const url = "https://give-me-app.herokuapp.com/api"
+const users = "/users"
 
 export const signIn = `${users}/signin`
 export const signUp = `${users}/signup`

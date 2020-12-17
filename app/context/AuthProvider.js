@@ -1,16 +1,16 @@
-import React, { useContext, useReducer } from 'react'
-import AuthReducer, { stateInitialAuth } from '../reducers/AuthReducer'
+import React, { useContext, useReducer } from "react"
+import AuthReducer, { stateInitialAuth } from "../reducers/AuthReducer"
 
 const AuthContext = React.createContext()
 
 const AuthProvider = ({ children }) => {
-    const [userAuth, dispatch] = useReducer(AuthReducer, stateInitialAuth)
+  const [userAuth, dispatch] = useReducer(AuthReducer, stateInitialAuth)
 
-    return (
-        <AuthContext.Provider value={[userAuth, dispatch]}>
-            {children}
-        </AuthContext.Provider>
-    )
+  return (
+    <AuthContext.Provider value={[userAuth, dispatch]}>
+      {children}
+    </AuthContext.Provider>
+  )
 }
 
 const useUserAuth = () => useContext(AuthContext)[0]

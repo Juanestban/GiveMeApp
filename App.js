@@ -1,14 +1,16 @@
-import { StatusBar } from 'expo-status-bar'
-import React, { useState, useEffect } from 'react'
-import { StyleSheet, View } from 'react-native'
-import * as Font from 'expo-font'
-import Fonts from './app/config/Fonts'
-import Colors from './app/config/Colors'
-import ThemeNavigationContainer from './app/navigation/NavigationPrincipal'
-import AuthProvide from './app/context/AuthProvider'
+import { StatusBar } from "expo-status-bar"
+import React, { useState, useEffect } from "react"
+import { StyleSheet, View } from "react-native"
+import * as Font from "expo-font"
+import io from "socket.io-client"
+import Fonts from "./app/config/Fonts"
+import Colors from "./app/config/Colors"
+import ThemeNavigationContainer from "./app/navigation/NavigationPrincipal"
+import AuthProvide from "./app/context/AuthProvider"
 
 export default function App() {
   const [loadingFonts, setLoadingFonts] = useState(false)
+  const socket = io("http://192.168.0.4:3000")
 
   const loaderFont = async () => {
     await Font.loadAsync(Fonts)
@@ -35,6 +37,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  }
+    flex: 1,
+  },
 })

@@ -1,5 +1,5 @@
 export const TypesAuthUser = {
-    signIn: 'signIn - Auth',
-    signOut: 'signOut - Auth',
-    retoreAurh: 'restoreToken - Auth'
+  signIn: "signIn - Auth",
+  signOut: "signOut - Auth",
+  retoreAurh: "restoreToken - Auth",
 }
